@@ -3,8 +3,13 @@ import React from "react";
 import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 
+import ImageIcon from "@temp/components/ImageIcon";
 import * as S from "./styles";
 import { IProps } from "./types";
+
+import imgNew from "../../../../images/badge-new.png";
+import imgSale from "../../../../images/badge-sale.png";
+import { on } from "cluster";
 
 export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   const price =
@@ -13,9 +18,14 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
     product.pricing.priceRange.start
       ? product.pricing.priceRange.start
       : undefined;
+  const onSale = product.pricing.onSale? product.pricing.onSale: false
 
   return (
     <S.Wrapper data-cy="product-tile">
+      <S.ImgIconWrapper>
+        <ImageIcon imgPath={imgNew} imgClass='icon-img-c'/>
+        { onSale && <ImageIcon imgPath={imgSale} imgClass='icon-img-c'/> }
+      </S.ImgIconWrapper>
       <S.Title>{product.name}</S.Title>
       <S.Price>
         <TaxedMoney taxedMoney={price} />

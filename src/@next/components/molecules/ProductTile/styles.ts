@@ -44,3 +44,9 @@ export const Image = styled.div`
     max-width: 100%;
   }
 `;
+
+export const ImgIconWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+`;
