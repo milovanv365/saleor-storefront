@@ -7,8 +7,8 @@ interface IconProps {
   imgClass: string;
 }
 
-const ImageIcon: React.FC<IconProps> = ({imgPath, imgClass}: IconProps) => (
-  <img src={imgPath} className={imgClass} />
+const ImageIcon: React.FC<IconProps> = ({imgPath, imgClass}) => (
+  <img src={imgPath} className={imgClass} alt='Badge Image'/>
 );
 
 export default ImageIcon;

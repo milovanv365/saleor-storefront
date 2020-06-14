@@ -4,12 +4,13 @@ import { TaxedMoney } from "@components/containers";
 import { Thumbnail } from "@components/molecules";
 
 import ImageIcon from "@temp/components/ImageIcon";
+import StockAvailability from "@temp/components/StockAvailability";
 import * as S from "./styles";
 import { IProps } from "./types";
 
 import imgNew from "../../../../images/badge-new.png";
 import imgSale from "../../../../images/badge-sale.png";
-import { on } from "cluster";
+
 
 export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
   const price =
@@ -18,7 +19,15 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
     product.pricing.priceRange.start
       ? product.pricing.priceRange.start
       : undefined;
-  const onSale = product.pricing.onSale? product.pricing.onSale: false
+
+  const onSale =
+    product.pricing &&
+    product.pricing.onSale
+      ? product.pricing.onSale
+      : false;
+
+  const inStock = 'stock-status in'
+  const stockStatus = 'in stock'
 
   return (
     <S.Wrapper data-cy="product-tile">
@@ -32,6 +41,9 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
       </S.Price>
       <S.Image>
         <Thumbnail source={product} />
+      </S.Image>
+      <S.Image>
+        <StockAvailability imgClass={inStock} stockStatus = {stockStatus}/>
       </S.Image>
     </S.Wrapper>
   );

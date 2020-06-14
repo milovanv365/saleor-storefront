@@ -1,0 +1,22 @@
+@import "../../../globalStyles/scss/variables.scss";
+
+.icon-img-c {
+  width: 57px !important;
+}
+
+.stock-status {
+  display: flex;
+  justify-content: center;
+  .svg-wrapper {
+    margin-right: 0.25rem;
+    div {
+      width: 20px;
+    }
+  }
+  h4 {
+    font-weight: bold;
+  }
+}
+.stock-status.in {
+  color: #61b504;
+}
