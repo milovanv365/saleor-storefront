@@ -52,6 +52,9 @@
         @media (min-width: $container-width) {
           width: calc(#{$container-width} * 30 / 100);
         }
+        .stock-status {
+          justify-content: flex-end;
+        }
       }
     }
 

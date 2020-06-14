@@ -16,6 +16,7 @@ import { ICheckoutModelLine } from "@sdk/repository";
 import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
 import { ProductGallery } from "../../@next/components/organisms/";
 
+import StockAvailability from "@temp/components/StockAvailability";
 import { structuredData } from "../../core/SEO/Product/structuredData";
 
 class Page extends React.PureComponent<
@@ -99,6 +100,10 @@ class Page extends React.PureComponent<
         setVariantId={this.setVariantId}
       />
     );
+
+    const stockStatus = product.isAvailable ? "in stock" : "out off stock"
+    const stockClassName = product.isAvailable ? "stock-status in": "stock-status out"
+
     return (
       <div className="product-page">
         <div className="container">
@@ -118,6 +123,7 @@ class Page extends React.PureComponent<
                   <>
                     <GalleryCarousel images={this.getImages()} />
                     <div className="product-page__product__info">
+                      <StockAvailability imgClass={stockClassName} stockStatus = {stockStatus}/>
                       {productDescription}
                     </div>
                   </>
@@ -135,6 +141,7 @@ class Page extends React.PureComponent<
                           "product-page__product__info--fixed"
                         )}
                       >
+                        <StockAvailability imgClass={stockClassName} stockStatus = {stockStatus}/>
                         {productDescription}
                       </div>
                     </div>
