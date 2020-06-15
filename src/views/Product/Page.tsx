@@ -16,7 +16,10 @@ import { ICheckoutModelLine } from "@sdk/repository";
 import { ProductDescription as NewProductDescription } from "../../@next/components/molecules";
 import { ProductGallery } from "../../@next/components/organisms/";
 
+import ImageIcon from "@temp/components/ImageIcon";
 import StockAvailability from "@temp/components/StockAvailability";
+import imgNew from "images/badge-new.png";
+import imgSale from "images/badge-sale.png";
 import { structuredData } from "../../core/SEO/Product/structuredData";
 
 class Page extends React.PureComponent<
@@ -103,6 +106,11 @@ class Page extends React.PureComponent<
 
     const stockStatus = product.isAvailable ? "in stock" : "out off stock"
     const stockClassName = product.isAvailable ? "stock-status in": "stock-status out"
+    const onSale =
+      product.pricing &&
+      product.pricing.onSale
+        ? product.pricing.onSale
+        : false;
 
     return (
       <div className="product-page">
@@ -121,6 +129,10 @@ class Page extends React.PureComponent<
               {matches =>
                 matches ? (
                   <>
+                    <div>
+                      <ImageIcon imgPath={imgNew} imgClass='icon-img-c'/>
+                      { onSale && <ImageIcon imgPath={imgSale} imgClass='icon-img-c'/> }
+                    </div>
                     <GalleryCarousel images={this.getImages()} />
                     <div className="product-page__product__info">
                       <StockAvailability imgClass={stockClassName} stockStatus = {stockStatus}/>
@@ -133,6 +145,10 @@ class Page extends React.PureComponent<
                       className="product-page__product__gallery"
                       ref={this.productGallery}
                     >
+                      <div>
+                        <ImageIcon imgPath={imgNew} imgClass='icon-img-c'/>
+                        { onSale && <ImageIcon imgPath={imgSale} imgClass='icon-img-c'/> }
+                      </div>
                       <ProductGallery images={this.getImages()} />
                     </div>
                     <div className="product-page__product__info">
