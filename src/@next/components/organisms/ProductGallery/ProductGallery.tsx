@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 
 import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
+import {CachedImageZoom} from "@temp/components/CachedImageZoom";
 
 import * as S from "./styles";
 import { IProps } from "./types";
@@ -114,12 +115,12 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
 
       <S.Preview>
         {images && images.length > 0 && imageIndex < images.length && (
-          <CachedImage
+          <CachedImageZoom
             alt={images[imageIndex].alt}
             url={images[imageIndex].url}
           />
         )}
-        {images.length === 0 && <CachedImage />}
+        {images.length === 0 && <CachedImageZoom />}
       </S.Preview>
     </S.Wrapper>
   );
