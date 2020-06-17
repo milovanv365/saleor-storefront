@@ -40,7 +40,7 @@ export const Image = styled.div`
 
   > img {
     width: auto;
-    height: auto;
+    height: 255px;
     max-width: 100%;
   }
 `;
