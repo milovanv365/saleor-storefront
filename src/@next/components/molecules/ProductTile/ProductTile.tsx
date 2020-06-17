@@ -26,8 +26,8 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
       ? product.pricing.onSale
       : false;
 
-  const inStock = 'stock-status in'
-  const stockStatus = 'in stock'
+  const stockStatus = product.isAvailable ? "in stock" : "out off stock"
+  const stockClassName = product.isAvailable ? "stock-status in": "stock-status out"
 
   return (
     <S.Wrapper data-cy="product-tile">
@@ -43,7 +43,7 @@ export const ProductTile: React.FC<IProps> = ({ product }: IProps) => {
         <Thumbnail source={product} />
       </S.Image>
       <S.Image>
-        <StockAvailability imgClass={inStock} stockStatus = {stockStatus}/>
+        <StockAvailability imgClass={stockClassName} stockStatus = {stockStatus}/>
       </S.Image>
     </S.Wrapper>
   );

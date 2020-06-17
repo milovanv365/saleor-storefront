@@ -34,6 +34,7 @@ export const categoryProductsQuery = gql`
         node {
           ...BasicProductFields
           ...ProductPricingField
+          isAvailable
           category {
             id
             name
